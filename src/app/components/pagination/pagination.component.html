@@ -1,0 +1,29 @@
+<nav #paginatior aria-label="Page navigation example">
+  <ul class="pagination justify-content-end">
+    <li
+      id="prevEl-{{ random }}"
+      class="page-item"
+      *ngIf="collectionSize > pageSize"
+    >
+      <a class="page-link" (click)="prev()" tabindex="-1">Previous</a>
+    </li>
+    <li
+      #liItem
+      *ngFor="let item of pageItems"
+      class="page-item"
+      (click)="pageSelected(liItem)"
+    >
+      <a class="page-link">{{ item }}</a>
+    </li>
+    <!-- <li class="page-item" *ngIf="rotate && collectionSize > pageSize">
+      <a class="page-link">...</a>
+    </li> -->
+    <li
+      id="nextEl-{{ random }}"
+      class="page-item"
+      *ngIf="collectionSize > pageSize"
+    >
+      <a class="page-link" (click)="next()">Next</a>
+    </li>
+  </ul>
+</nav>

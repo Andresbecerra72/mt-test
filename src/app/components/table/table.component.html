@@ -1,0 +1,29 @@
+<div class="container mt-3">
+  <h3>{{ data?.base }}</h3>
+  <p>Date: {{ data?.date | date: 'dd-MM-yyyy' }}</p>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Currency</th>
+        <th scope="col">Value</th>
+      </tr>
+    </thead>
+    <tbody class="table-group-divider">
+      <tr *ngFor="let item of page">
+        <td>{{ item.type }}</td>
+        <td>{{ item.value | currency: '4.6-6' }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="values.length > 1">
+    <app-pagination
+      [collection]="values"
+      [collectionSize]="values?.length"
+      [maxSize]="4"
+      [rotate]="true"
+      [pageSize]="5"
+      (pageChange)="setData($event)"
+    ></app-pagination>
+  </div>
+</div>
